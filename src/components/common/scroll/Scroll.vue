@@ -25,18 +25,27 @@
         movable:true,
         observeDOM:true,
         click:true,
-        probeType:this.probeType
+        probeType:this.probeType,
+        pullUpLoad:true
       })
-      this.bs.refresh()
-      // this.bs.scrollTo(0, 0)
 
       this.bs.on('scroll',position => {
-        this.$emit('scroll',position)
+        this.bs && this.$emit('scroll',position)
+        
+      })
+      // console.log(this.bs);
+      this.bs.on('pullingUp', () => {
+     
+       this.$emit('pullingUp');
       })
     },
     methods:{
       scrollTo(x, y, time=300){
-        this.bs.scrollTo(x, y, time)
+        this.bs && this.bs.scrollTo(x, y, time)
+      },
+      refresh() {
+        // console.log('---');
+        this.bs && this.bs.refresh()
       }
     }
   }

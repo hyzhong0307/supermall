@@ -1,8 +1,6 @@
 <template>
-  <div class="goods-item">
-    <a :href="goodsItem.link">
-      <img :src="goodsItem.show.img" alt="">
-    </a>
+  <div class="goods-item" @click="itemClick">
+    <img :src="goodsItem.show.img" alt="" @load="loadImage">
     <p>{{goodsItem.title}}</p>
     <span class="price">{{goodsItem.price}}</span>
     <span class="collect">{{goodsItem.cfav}}</span>
@@ -18,6 +16,14 @@
         default(){
           return {}
         }
+      }
+    },
+    methods:{
+      loadImage() {
+        this.$bus.$emit('loadImageFull')
+      },
+      itemClick() {
+        this.$router.push('/detail/' + this.goodsItem.iid)
       }
     }
   }

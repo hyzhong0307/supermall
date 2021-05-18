@@ -24,6 +24,10 @@ const routes = [
   {
     path:'/profile',
     component:All.Profile,
+  },
+  {
+    path:'/detail/:iid',
+    component:All.Detail
   }
 ]
 

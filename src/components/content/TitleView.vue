@@ -23,7 +23,8 @@
     },
     methods:{
       itemClick(index){
-        this.currentDate = index
+        // this.currentDate = index
+        this.$emit('changeClick',index)
       }
     }
   }
@@ -32,8 +33,8 @@
 <style scoped>
 .title-view {
   display: flex;
-  height: 40px;
-  line-height: 40px;
+  height: 50px;
+  line-height: 50px;
   /* background-color: deepskyblue; */
   text-align: center;
   width: 100%;

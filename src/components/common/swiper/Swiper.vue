@@ -3,8 +3,8 @@
       <div class="swiper" @touchstart="touchStart" @touchmove="touchMove" @touchend="touchEnd">
         <slot></slot>
       </div>
-      <slot name="indicator">
-      </slot>
+      <!-- <slot name="indicator">
+      </slot> -->
       <div class="indicator">
         <slot name="indicator" v-if="showIndicator && slideCount>1">
           <div v-for="(item, index) in slideCount" class="indi-item" :class="{active: index === currentIndex-1}" :key="index"></div>
@@ -50,7 +50,7 @@
 
         // 2.开启定时器
         this.startTimer();
-      }, 100)
+      }, 800)
     },
     methods: {
 		  /**
@@ -123,6 +123,7 @@
 
         // 2.保存个数
         this.slideCount = slidesEls.length;
+        console.log(this.slideCount);
 
         // 3.如果大于1个, 那么在前后分别添加一个slide
         if (this.slideCount > 1) {
