@@ -1,8 +1,8 @@
 <template>
   <div class="goods-item" @click="itemClick">
-    <img :src="goodsItem.show.img" alt="" @load="loadImage">
+    <img v-lazy="showImage" alt="" @load="loadImage">
     <p>{{goodsItem.title}}</p>
-    <span class="price">{{goodsItem.price}}</span>
+    <span class="prices">{{goodsItem.price | showPrice}}</span>
     <span class="collect">{{goodsItem.cfav}}</span>
 
   </div>
@@ -20,10 +20,26 @@
     },
     methods:{
       loadImage() {
-        this.$bus.$emit('loadImageFull')
+        if (this.$route.path === '/home'){
+          this.$bus.$emit('loadImageFull')
+        }else if(this.$route.path == '/detail') {
+          this.$bus.$emit('DetailImage')
+        }
+        
       },
       itemClick() {
         this.$router.push('/detail/' + this.goodsItem.iid)
+      },
+      
+    },
+    computed: {
+      showImage() {
+        return this.goodsItem.image || this.goodsItem.show.img
+      }
+    },
+    filters: {
+      showPrice(price) {
+        return '¥ '+ price
       }
     }
   }
@@ -44,5 +60,11 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+.prices {
+  color: red;
+}
+.collect {
+  margin-left: 5px;
 }
 </style>

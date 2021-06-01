@@ -30,6 +30,7 @@ export default {
   },
   methods: {
     imageLoad() {
+      // 当加载全部完成后进行发射事件
       if (++this.counter === this.imagesLength) {
         this.$emit("imageLoad");
       }
@@ -42,6 +43,7 @@ export default {
   },
   watch: {
     // detailInfo 是父组件传过来的属性
+    // 监视detailInfo数据的改变，当数据改变是，watch会重新对长度进行赋值
     detailInfo() {
       this.imagesLength =this.detailInfo?this.detailInfo.detailImage[0].list.length:'';
     },

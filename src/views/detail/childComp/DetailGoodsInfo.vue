@@ -3,7 +3,7 @@
     <!-- 通过传递过来的对象，在子组件中来对数据进行展示 -->
     <p class="title">{{goodsInfo.title}}</p>
     <div class="price">
-      <span class="nowPrice left">{{goodsInfo.lowNowPrice}}</span>
+      <span class="nowPrice left">{{goodsInfo.lowNowPrice | showPrice}}</span>
       <span class="oldPrice left" v-if="goodsInfo.oldPrice">{{goodsInfo.oldPrice}}</span>
       <span class="discount left" v-if="goodsInfo.discount">{{goodsInfo.discount}}</span>
       <div class="clear"></div>
@@ -32,6 +32,11 @@
         default(){
           return {}
         }
+      }
+    },
+    filters: {
+      showPrice(value) {
+        return '¥' + value
       }
     }
   }

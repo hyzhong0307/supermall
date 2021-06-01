@@ -9,6 +9,12 @@ export function getDetail(iid) {
   })
 }
 
+export function getRecommend() {
+  return request({
+    url:'/recommend'
+  })
+}
+
 export class Goods {
   constructor(itemInfo, columns, service) {
     // 通过传递的三个参数，将下面数据保存到一个类中

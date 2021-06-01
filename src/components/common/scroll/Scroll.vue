@@ -44,7 +44,7 @@
         this.bs && this.bs.scrollTo(x, y, time)
       },
       refresh() {
-        // console.log('---');
+        console.log('---');
         this.bs && this.bs.refresh()
       }
     }
